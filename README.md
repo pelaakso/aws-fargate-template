@@ -48,14 +48,14 @@ Push an image to ECR repository:
 * Tag your image
 
 ```bash
-docker tag YOUR-IMAGE:latest 123456789012.dkr.ecr.eu-central-1.amazonaws.com/YOUR-IMAGE:latest
+docker tag YOUR-IMAGE:latest 123456789012.dkr.ecr.eu-central-1.amazonaws.com/fargate-template:latest
 ```
 
 * Login to ECR and push
 
 ```bash
 aws --profile YOUR-PROFILE ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.eu-central-1.amazonaws.com
-docker push 123456789012.dkr.ecr.eu-central-1.amazonaws.com/YOUR-IMAGE:latest
+docker push 123456789012.dkr.ecr.eu-central-1.amazonaws.com/fargate-template:latest
 ```
 
 These instructions can also be found in ECR repository page in AWS console, "View push commands" button.
