@@ -35,5 +35,9 @@ jobs:
       - name: Code style
         run: npx prettier --check .
 
+      - name: Create configuration
+        run: |
+          cp infra/bin/awsConfigExample.ts infra/bin/awsConfig.ts
+
       - name: Test infra
         run: npm run test
