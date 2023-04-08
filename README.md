@@ -18,9 +18,12 @@ Additionally, the following resources are created:
 
 ## Caveats
 
-* An existing VPC is required to deploy the template.
+* An existing VPC is recommended to deploy the template.
 * Skipping some configuration values might trigger an automatic creation of resources by CDK.
 Eg. a new VPC is created if `vpcId` is not provided.
+* An outbound internet connection is required to run Fargate tasks (unless you have explicitly created VPC endpoints for AWS services).
+  * If using a personal AWS account, you are probably trying to minimize costs and do not have a NAT gateway.
+  * Remember to start you NAT EC2 instance.
 
 ## Configuring
 
