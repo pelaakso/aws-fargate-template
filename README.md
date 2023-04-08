@@ -59,5 +59,6 @@ docker push 123456789012.dkr.ecr.eu-central-1.amazonaws.com/fargate-template:lat
 ```
 
 These instructions can also be found in ECR repository page in AWS console, "View push commands" button.
+They also might need to be adapted if you fine tune the configuration variables in [infta.ts](infra/bin/infra.ts).
 
 After setting up the ECR, run a Fargate task in AWS console or any other way you prefer.
