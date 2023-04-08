@@ -16,6 +16,9 @@ Additionally, the following resources are created:
 * CloudWatch log group for ECS logs
 * ECR repository for Docker images
 
+None of the resources created by the stack incur any costs initially.
+Leaving a Fargate task running or a great amount of log data to CloudWatch LogGroup will incur costs.
+
 ## Caveats
 
 * An existing VPC is recommended to deploy the template.
