@@ -37,7 +37,7 @@ jobs:
 
       - name: Create configuration
         run: |
-          cp infra/bin/awsConfigExample.ts infra/bin/awsConfig.ts
+          cp bin/awsConfigExample.ts bin/awsConfig.ts
 
       - name: Test infra
         run: npm run test
