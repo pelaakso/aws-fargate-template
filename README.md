@@ -37,3 +37,27 @@ export const awsConfig: AWSConfiguration = {
 ```
 
 Variables in [infta.ts](infra/bin/infra.ts) can be fine tuned to your needs.
+
+## Running tasks
+
+To run Fargate tasks on the created cluster, follow these guidelines.
+
+Push an image to ECR repository:
+
+* Build you image
+* Tag your image
+
+```bash
+docker tag YOUR-IMAGE:latest 123456789012.dkr.ecr.eu-central-1.amazonaws.com/YOUR-IMAGE:latest
+```
+
+* Login to ECR and push
+
+```bash
+aws --profile YOUR-PROFILE ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin 123456789012.dkr.ecr.eu-central-1.amazonaws.com
+docker push 123456789012.dkr.ecr.eu-central-1.amazonaws.com/YOUR-IMAGE:latest
+```
+
+These instructions can also be found in ECR repository page in AWS console, "View push commands" button.
+
+After setting up the ECR, run a Fargate task in AWS console or any other way you prefer.
