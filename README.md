@@ -6,6 +6,10 @@ AWS ECS Fargate template to use as base for projects.
 
 * [infra](./infra) directory contains CDK infra to deploy the template to AWS.
 
+_Disclaimer_: use at your own risk.
+Best effort is made to get things right, but no guarantees are made.
+Don't send me any bills you might create in AWS, that will be waste of your time.
+
 ## What is being created
 
 The template creates an ECS cluster with Fargate launch type.
