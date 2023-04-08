@@ -46,6 +46,8 @@ export const awsConfig: AWSConfiguration = {
 };
 ```
 
+[awsConfigExample.ts](infra/bin/awsConfigExample.ts) can be used as a template.
+
 Variables in [infta.ts](infra/bin/infra.ts) can be fine tuned to your needs.
 
 ## Running tasks
