@@ -20,7 +20,7 @@ const app = new cdk.App();
 
 new FargateTemplateStack(app, stackName, {
   description: 'Fargate template',
-  env: { account: awsConfig.accountId, region: 'eu-central-1' },
+  env: { account: awsConfig.accountId, region: awsConfig.region },
   vpcId: awsConfig.vpcId,
   resourceName,
   cpu,

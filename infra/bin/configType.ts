@@ -6,6 +6,9 @@ export interface AWSConfiguration {
   /** Account id is not actually something to be kept secret. */
   readonly accountId: string;
 
+  /** The region to use for the ECS cluster. */
+  readonly region: string;
+
   /** The VPC ID to use for the ECS cluster. */
   readonly vpcId: string;
 }
