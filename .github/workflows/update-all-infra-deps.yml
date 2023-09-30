@@ -6,6 +6,9 @@ on:
 jobs:
   update-infra-dependencies:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     timeout-minutes: 2
     defaults:
       run:
