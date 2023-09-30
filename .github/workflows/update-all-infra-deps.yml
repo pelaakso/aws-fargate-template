@@ -44,7 +44,7 @@ jobs:
         run: |
           git config --local user.email "pelaakso@users.noreply.github.com"
           git config --local user.name "pelaakso"
-          git commit -a -m "Update infra dependencies"
+          git commit -a -m "Deps/infra: update most infra dependencies"
 
       - name: Push changes
         run: |
@@ -52,6 +52,6 @@ jobs:
 
       - name: Create pull request
         run: |
-          gh pr create --base main --head infra-deps --title "Update infra dependencies" --body "Update almost all dependencies"
+          gh pr create --base main --head infra-deps --title "Deps/infra: update most infra dependencies" --body "Update almost all dependencies, exluding node types"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
