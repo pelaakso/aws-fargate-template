@@ -27,7 +27,7 @@ jobs:
             infra/package-lock.json
 
       - name: Install infra dependencies
-        run: npm ci
+        run: npm i
 
       - name: Create working branch
         run: |
