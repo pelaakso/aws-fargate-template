@@ -46,6 +46,10 @@ jobs:
           git config --local user.name "pelaakso"
           git commit -a -m "Update infra dependencies"
 
+      - name: Push changes
+        run: |
+          git push origin infra-deps
+
       - name: Create pull request
         run: |
           gh pr create --base main --head infra-deps --title "Update infra dependencies" --body "Update almost all dependencies"
