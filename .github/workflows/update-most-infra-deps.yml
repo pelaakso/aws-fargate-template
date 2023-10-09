@@ -46,6 +46,14 @@ jobs:
           git config --local user.name "pelaakso"
           git commit -a -m "Deps/infra: update most infra dependencies"
 
+      - name: Create configuration
+        run: |
+          cp bin/awsConfigExample.ts bin/awsConfig.ts
+
+      - name: Test
+        run: |
+          npm run test
+
       - name: Push changes
         run: |
           git push origin infra-deps
