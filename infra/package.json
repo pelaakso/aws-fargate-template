@@ -5,8 +5,8 @@
     "infra": "bin/infra.js"
   },
   "engines": {
-    "node": ">20.0.0 <21.0.0",
-    "npm": ">=10.0.0"
+    "node": ">18.0.0 <21.0.0",
+    "npm": ">=8.0.0"
   },
   "scripts": {
     "all": "npm run clean && npx eslint . && npx prettier --check . && npm run test",
