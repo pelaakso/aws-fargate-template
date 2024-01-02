@@ -38,7 +38,7 @@ jobs:
 
       - name: Update dependencies
         run: |
-          npx --yes npm-check-updates -u --reject @types/node --install always
+          npx --yes npm-check-updates -u --reject @types/node,vite,vitest --install always
 
       - name: Commit changes
         run: |
