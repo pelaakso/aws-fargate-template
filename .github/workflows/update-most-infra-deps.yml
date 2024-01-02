@@ -60,6 +60,6 @@ jobs:
 
       - name: Create pull request
         run: |
-          gh pr create --base main --head infra-deps --title "Deps/infra: update most infra dependencies" --body "Update almost all dependencies, exluding node types"
+          gh pr create --base main --head infra-deps --title "Deps/infra: update most infra dependencies" --body "Update almost all dependencies, exluding node types, vite and vitest"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
