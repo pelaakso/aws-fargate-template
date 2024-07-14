@@ -38,7 +38,7 @@ jobs:
 
       - name: Update dependencies
         run: |
-          npx --yes npm-check-updates -u --reject @types/node,vite,vitest --install always
+          npx --yes npm-check-updates -u --reject @types/node,eslint,vite,vitest --install always
 
       - name: Commit changes
         run: |
@@ -60,6 +60,6 @@ jobs:
 
       - name: Create pull request
         run: |
-          gh pr create --base main --head infra-deps --title "Deps/infra: update most infra dependencies" --body "Update almost all dependencies, exluding node types, vite and vitest"
+          gh pr create --base main --head infra-deps --title "Deps/infra: update most infra dependencies" --body "Update almost all dependencies, exluding node types, eslint, vite and vitest"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
