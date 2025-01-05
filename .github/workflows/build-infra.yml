@@ -3,8 +3,8 @@ name: Infra - build and test
 on:
   push:
     paths:
-      - 'infra/**'
-      - '.github/workflows/build-infra.yml'
+      - "infra/**"
+      - ".github/workflows/build-infra.yml"
 
 jobs:
   build-and-test-infra:
@@ -18,10 +18,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Use Node.js 20.x
+      - name: Use Node.js 22.x
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 22.x
           cache: npm
           cache-dependency-path: |
             infra/package-lock.json
