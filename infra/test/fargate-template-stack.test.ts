@@ -1,7 +1,6 @@
 import { Template } from 'aws-cdk-lib/assertions';
 import * as cdk from 'aws-cdk-lib';
 import { FargateTemplateStack } from '../lib/fargate-template-stack';
-import { expect, test } from 'vitest';
 import { RetentionDays } from 'aws-cdk-lib/aws-logs';
 
 test('Stack snapshot', () => {
