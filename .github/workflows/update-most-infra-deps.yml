@@ -21,10 +21,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Use Node.js 20.x
+      - name: Use Node.js 22.x
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: 22.x
           cache: npm
           cache-dependency-path: |
             infra/package-lock.json
@@ -38,7 +38,7 @@ jobs:
 
       - name: Update dependencies
         run: |
-          npx --yes npm-check-updates -u --reject @types/node,eslint,vite,vitest --install always
+          npx --yes npm-check-updates -u --install always
 
       - name: Commit changes
         run: |
@@ -60,6 +60,6 @@ jobs:
 
       - name: Create pull request
         run: |
-          gh pr create --base main --head infra-deps --title "Deps/infra: update most infra dependencies" --body "Update almost all dependencies, exluding node types, eslint, vite and vitest"
+          gh pr create --base main --head infra-deps --title "Deps/infra: update all infra dependencies" --body "Update all dependencies"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
