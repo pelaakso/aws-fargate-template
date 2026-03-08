@@ -7,10 +7,10 @@ Using:
 
 ## Useful commands
 
-- `npm run all` run all steps
-- `npm run watch` watch for changes and compile
-- `npm run test` perform the vitest unit tests
-- `npm run snap -- -u` accept and update snapshot tests
-- `npx cdk --profile your-profile deploy` deploy this stack to AWS account/region
-- `npx cdk --profile your-profile diff` compare deployed stack with current state
-- `npx cdk --profile your-profile synth` emits the synthesized CloudFormation template
+- `pnpm run all` run all steps
+- `pnpm run watch` watch for changes and compile
+- `pnpm run test` perform the Jest unit tests
+- `pnpm run snap -- -u` accept and update snapshot tests
+- `pnpm exec cdk --profile your-profile deploy` deploy this stack to AWS account/region
+- `pnpm exec cdk --profile your-profile diff` compare deployed stack with current state
+- `pnpm exec cdk --profile your-profile synth` emits the synthesized CloudFormation template

@@ -1,0 +1,14 @@
+packages:
+  - '.'
+
+# minimum number of minutes that must pass after a version is published before pnpm will install it, 2880 = 2 days
+minimumReleaseAge: 2880
+
+strictDepBuilds: true
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - semver@6.3.1
+  - ts-api-utils@2.3.0
+onlyBuiltDependencies:
+  - unrs-resolver@1.11.1
+ignoredBuiltDependencies: []

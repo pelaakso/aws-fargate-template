@@ -10,6 +10,8 @@ jobs:
       contents: write
       pull-requests: write
     timeout-minutes: 4
+    env:
+      BRANCH_NAME: infra-deps-${{ github.run_id }}-${{ github.run_attempt }}
     defaults:
       run:
         shell: bash
@@ -21,26 +23,42 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Use Node.js 22.x
         uses: actions/setup-node@v6
         with:
           node-version: 22.x
-          cache: npm
+          cache: pnpm
           cache-dependency-path: |
-            infra/package-lock.json
+            infra/pnpm-lock.yaml
 
       - name: Install infra dependencies
-        run: npm i
+        run: pnpm install
 
       - name: Create working branch
         run: |
-          git checkout -b infra-deps
+          git checkout -b "$BRANCH_NAME"
 
       - name: Update dependencies
         run: |
-          npx --yes npm-check-updates -u --install always
+          pnpm exec npm-check-updates -u
+          pnpm install
+
+      - name: Detect dependency changes
+        id: detect_changes
+        run: |
+          if git diff --quiet; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Commit changes
+        if: steps.detect_changes.outputs.has_changes == 'true'
         run: |
           git config --local user.email "pelaakso@users.noreply.github.com"
           git config --local user.name "pelaakso"
@@ -51,15 +69,23 @@ jobs:
           cp bin/awsConfigExample.ts bin/awsConfig.ts
 
       - name: Test
+        if: steps.detect_changes.outputs.has_changes == 'true'
         run: |
-          npm run test
+          pnpm run test
+
+      - name: No dependency changes
+        if: steps.detect_changes.outputs.has_changes != 'true'
+        run: |
+          printf '%s\n' 'No dependency updates found.'
 
       - name: Push changes
+        if: steps.detect_changes.outputs.has_changes == 'true'
         run: |
-          git push origin infra-deps
+          git push origin "$BRANCH_NAME"
 
       - name: Create pull request
+        if: steps.detect_changes.outputs.has_changes == 'true'
         run: |
-          gh pr create --base main --head infra-deps --title "Deps/infra: update all infra dependencies" --body "Update all dependencies"
+          gh pr create --base main --head "$BRANCH_NAME" --title "Deps/infra: update all infra dependencies" --body "Update all dependencies"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
