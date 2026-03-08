@@ -2,6 +2,7 @@
 **/*.json
 **/*.md
 cdk.out/
+pnpm-lock.yaml
 bin/**/*.js
 bin/**/*d.ts
 lib/**/*.js

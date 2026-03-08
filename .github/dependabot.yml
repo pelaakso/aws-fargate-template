@@ -1,9 +1,11 @@
 version: 2
 updates:
-  # Enable version updates for infra (npm)
+  # Enable version updates for infra (npm ecosystem)
   - package-ecosystem: "npm"
     # Where to look for package.json and lock files
     directory: "/infra"
+    cooldown:
+      default-days: 3
     # Check updates every day (weekdays)
     schedule:
       interval: "daily"

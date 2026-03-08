@@ -18,26 +18,31 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: Use Node.js 22.x
         uses: actions/setup-node@v6
         with:
           node-version: 22.x
-          cache: npm
+          cache: pnpm
           cache-dependency-path: |
-            infra/package-lock.json
+            infra/pnpm-lock.yaml
 
       - name: Install infra dependencies
-        run: npm ci
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        run: npx eslint .
+        run: pnpm run eslint
 
       - name: Code style
-        run: npx prettier --check .
+        run: pnpm run prettier
 
       - name: Create configuration
         run: |
           cp bin/awsConfigExample.ts bin/awsConfig.ts
 
       - name: Test infra
-        run: npm run test
+        run: pnpm run test
